@@ -1,19 +1,15 @@
 import express from 'express'
+import { userRouter } from './users/users.js'
 
 
 const port = 8000
 const app = express()
 
 app.get('/hello', (req, res) => {
-	res.cookie('token', 'sdfskf', {
-		damain: '',
-		path: '/',
-		secure: true,
-		expires: 230000
-	})
-	res.clearCookie('token')
-	res.send('ПРивет')
+	res.end()
 })
+
+app.use('/users', userRouter)
 	
 app.listen(port, () => {
 	console.log(`Сервер запущен на http://localhost:${port}`)
