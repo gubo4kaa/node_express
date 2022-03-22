@@ -1,9 +1,11 @@
-import express from 'express'
+import express, {Request, Response, NextFunction} from 'express'
 import { userRouter } from './users/users.js'
 
 
 const port = 8000
 const app = express()
+
+
 
 app.use((req,res,next) => {// router который стработает при каждом запросе 
 	console.log('Время', Date.now())
@@ -16,7 +18,7 @@ app.get('/hello', (req, res) => {//создаём ошибку
 
 app.use('/users', userRouter)// запрос начинающийся на /users будет перенаправлен на роутер userRouter 
 
-app.use((err,req,res,next) => {// если ошибка то он придёт в этот роут
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {// если ошибка то он придёт в этот роут
 	console.log(err.message)
 	res.status(401).send(err.message)
 })
