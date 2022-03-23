@@ -1,3 +1,5 @@
+import { join } from "path"
+
 let a: number = 5
 let b: string = '4'
 let c: number = a + Number(b)
@@ -30,3 +32,72 @@ names.map((x: string) =>x)
 function coord(coord: {lat: number, logn: number}) {
 	
 }
+
+let universalId: number | string = 5;
+universalId = 'sdfsd'
+function printId(id:number | string) {
+	if (typeof id == 'string') {
+		console.log(id.toUpperCase())
+	} else {
+		console.log(id)
+	}
+	console.log(id)
+}
+
+function helloUser(user: string| string[]) { // разводим типы данных простой проверкой на типы, что бы всегда знать с чем мы работаем
+	if (Array.isArray(user)) {
+		console.log(user.join(', ')+ 'HI!')
+	} else {
+		console.log(user + 'HI!')
+	}
+}
+
+// интерфейсы и тайпы, лучше интерфейсы конечно:
+
+type coord = {lat: number, long: number} //объявляем интерфес для того,что бы переиспользовать его далее
+ 
+interface ICoord {// интерфейсы описывают только объекты
+	lat: number;
+	long: number;
+
+}
+
+type ID = number | string // юнион тайпы полезны для уменьшения написания кода
+ 
+
+
+function compute(coord: ID) {
+
+}
+
+interface Animal {
+	name: string;
+}
+
+interface Dog extends Animal {// здесь добавляем интерфейсу Анимал ещё значнгие на хвост ? знак означает, что может этого занчения и не быть
+	tail?: boolean;
+}
+
+const dog: Dog ={
+	name: 'sdfjls'
+}
+
+interface Dog2 {
+	name: String
+}
+interface Dog2 {
+	tail: boolean
+}
+
+const dog2: Dog2 = {
+	name: 'weij',
+	tail: true
+}
+
+
+// Cтроки и литералы:
+
+
+
+
+
