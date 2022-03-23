@@ -97,7 +97,67 @@ const dog2: Dog2 = {
 
 // Cтроки и литералы:
 
+const z = 'sdlfjslfdskj'
+
+
+type direction = 'left' | 'rigth';
+
+function moveDog(direction: direction): -1 | 0 | 1 {
+	switch(direction) {
+		case 'left':
+			return -1
+		case 'rigth':
+			return 1
+		default:
+			return 0
+	}
+}
+
+
+const connection = {
+	host: 'localhost',
+	protocol: 'https' as 'https'//приведение к типу, так как ts знает что значение строки может измениться 
+}
 
 
 
 
+function connect(host: string, protocol: 'http' | 'https') {
+
+}
+
+connect(connection.host, connection.protocol)
+
+
+// enum
+
+type dirrection = 'left' | 'right' // юнион тайп
+
+enum Direction {
+	Left, 
+	Right
+}
+
+Direction.Left
+
+function move(direction: Direction) {
+	switch(direction) {
+		case Direction.Left:
+			return -1
+		case Direction.Right:
+			return 1
+	}
+}
+
+function objMod(obj: { Left: number}) {
+
+}
+
+objMod(Direction)
+
+const enum Direction2 {
+	Up,
+	Down
+}
+
+let myDirection = Direction2.Up
