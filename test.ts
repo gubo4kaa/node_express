@@ -44,7 +44,7 @@ function printId(id:number | string) {
 	console.log(id)
 }
 
-function helloUser(user: string| string[]) { // разводим типы данных простой проверкой на типы, что бы всегда знать с чем мы работаем
+function helloUser(user: string | string[]) { // разводим типы данных простой проверкой на типы, что бы всегда знать с чем мы работаем
 	if (Array.isArray(user)) {
 		console.log(user.join(', ')+ 'HI!')
 	} else {
