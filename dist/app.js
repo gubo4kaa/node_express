@@ -26,7 +26,6 @@ class App {
         this.app.use('/users', this.userController.router);
     }
     useExeptionFilters() {
-        console.log('use Exeption Filters');
         this.app.use(this.exeptionFilter.catch.bind(this.exeptionFilter));
     }
     init() {

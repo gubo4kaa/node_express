@@ -4,7 +4,7 @@ import { LoggerService } from "./logger/logger.service";
 import { UserController } from "./users/users.controller";
 
 
-async function bootstrap() {
+async function bootstrap() {//composition rout, точка сбора всех зависимостей
 	const logger = new LoggerService()
 	const app = new App(logger,
 		new UserController(logger),

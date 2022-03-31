@@ -1,6 +1,7 @@
 import {Logger} from 'tslog'
+import { ILogger } from './logger.interface';
 
-export class LoggerService {
+export class LoggerService  implements ILogger { // конкретная имплементация конкретного логгера, создание его
 	public logger: Logger
 
 
