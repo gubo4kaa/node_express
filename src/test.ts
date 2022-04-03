@@ -1,74 +1,51 @@
-function Comment(id: number) {
-	console.log('init component')
-	return (target: Function) => {
-		console.log('run component')
-		target.prototype.id = id
-	}	
+import 'reflect-metadata'
+
+function Test(target: Function) {
+	Reflect.defineMetadata('a', 1, target)
+	const meta = Reflect.getMetadata('a', target)
+	console.log(meta)
 }
 
-function Logger() {
-	console.log('init logger')
-	return (target: Function) => {
-		console.log('run logger')
-	}	
+function Prop(target: Object, name:string) {
+
 }
 
-function Method (
-	target: Object,
-	propertyKey: string,
-	propertyDesctiptor: PropertyDescriptor
-) {
-	console.log(propertyKey)
-	const oldValue = propertyDesctiptor.value
-	propertyDesctiptor.value = function(... args: any[]) {
-		return args [0] * 10
+@Test
+export class C {
+	@Prop prop:number
+}
+
+export class falka{
+	name: string
+	fersname: string
+	constructor(name: string, fersname: string) {
+		this.name = name
+		this.fersname = fersname
+	}
+
+	print() {
+		console.log(this.name, this.fersname)
 	}
 }
 
-function Prop(
-	target: Object,
-	propertyKey: string
-) {
-	let value: Number
+const y = new falka('Danil', 'Falka')
+y.print()
 
-	const getter = () => {
-		console.log('Get!')
-		return value
+export class ded extends falka {
+	nose: number
+	
+	constructor(name: string, fersname: string, nose: number,) {
+		super(name, fersname)
+		this.nose = nose
+		
 	}
 
-	const setter = (newValue: number) => {
-		console.log('Set!')
-		value = newValue
+	lengthNose (n: any):void {
+		n +=n
+		console.log(this.name, this.fersname, n)
+		console.log(this.nose)
 	}
 
-	Object.defineProperty(target, propertyKey, {
-		get: getter,
-		set: setter
-	})
-
 }
-
-function Param(
-	target: Object,
-	propertyKey: string,
-	index: number
-) {
-	console.log(propertyKey, index)
-}
-
-
-@Logger()
-@Comment(1)
-export class User {
-	@Prop id: number
-	@Method
-	updateId(@Param newId: number) {
-		this.id = newId
-		return this.id
-	}
-}
-
-
-
-console.log(new User().id)
-console.log(new User().updateId(2))
+const dedushka = new ded('Falka', 'Volodimir', 3)
+dedushka.lengthNose(3)

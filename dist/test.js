@@ -8,70 +8,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
-function Comment(id) {
-    console.log('init component');
-    return (target) => {
-        console.log('run component');
-        target.prototype.id = id;
-    };
+exports.ded = exports.falka = exports.C = void 0;
+require("reflect-metadata");
+function Test(target) {
+    Reflect.defineMetadata('a', 1, target);
+    const meta = Reflect.getMetadata('a', target);
+    console.log(meta);
 }
-function Logger() {
-    console.log('init logger');
-    return (target) => {
-        console.log('run logger');
-    };
+function Prop(target, name) {
 }
-function Method(target, propertyKey, propertyDesctiptor) {
-    console.log(propertyKey);
-    const oldValue = propertyDesctiptor.value;
-    propertyDesctiptor.value = function (...args) {
-        return args[0] * 10;
-    };
-}
-function Prop(target, propertyKey) {
-    let value;
-    const getter = () => {
-        console.log('Get!');
-        return value;
-    };
-    const setter = (newValue) => {
-        console.log('Set!');
-        value = newValue;
-    };
-    Object.defineProperty(target, propertyKey, {
-        get: getter,
-        set: setter
-    });
-}
-function Param(target, propertyKey, index) {
-    console.log(propertyKey, index);
-}
-let User = class User {
-    updateId(newId) {
-        this.id = newId;
-        return this.id;
-    }
+let C = class C {
 };
 __decorate([
     Prop,
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
-__decorate([
-    Method,
-    __param(0, Param),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], User.prototype, "updateId", null);
-User = __decorate([
-    Logger(),
-    Comment(1)
-], User);
-exports.User = User;
-console.log(new User().id);
-console.log(new User().updateId(2));
+], C.prototype, "prop", void 0);
+C = __decorate([
+    Test
+], C);
+exports.C = C;
+class falka {
+    constructor(name, fersname) {
+        this.name = name;
+        this.fersname = fersname;
+    }
+    print() {
+        console.log(this.name, this.fersname);
+    }
+}
+exports.falka = falka;
+const y = new falka('Danil', 'Falka');
+y.print();
+class ded extends falka {
+    constructor(name, fersname, nose) {
+        super(name, fersname);
+        this.nose = nose;
+    }
+    lengthNose(n) {
+        n += n;
+        console.log(this.name, this.fersname, n);
+        console.log(this.nose);
+    }
+}
+exports.ded = ded;
+const dedushka = new ded('Falka', 'Volodimir', 3);
+dedushka.lengthNose(3);
