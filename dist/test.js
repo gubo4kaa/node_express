@@ -16,8 +16,7 @@ function Test(target) {
     const meta = Reflect.getMetadata('a', target);
     console.log(meta);
 }
-function Prop(target, name) {
-}
+function Prop(target, name) { }
 let C = class C {
 };
 __decorate([

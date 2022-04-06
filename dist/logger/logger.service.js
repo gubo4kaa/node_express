@@ -19,7 +19,7 @@ let LoggerService = class LoggerService {
             displayInstanceName: false,
             displayLoggerName: false,
             displayFilePath: 'hidden',
-            displayFunctionName: false
+            displayFunctionName: false,
         });
     }
     log(...arg) {
