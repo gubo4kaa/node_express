@@ -1,5 +1,3 @@
-# Сreate my first api on node!
-готовый https://github.com/AlariCode/4-nodejs-demo-3
 1. Не забываем посмотреть tsconfig.json
 2. Установить типизацию как дев зависимость 
 3. Собрать проект в js 
